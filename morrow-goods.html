@@ -3,15 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Clearframe Web designs and builds websites for independent businesses. Explore the work and start a project.">
-<meta name="theme-color" content="#111110">
+<meta name="description" content="A homewares shop concept with an interactive shopping bag.">
 <title>Morrow Goods | Clearframe Web concept</title>
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="demos.css">
+<script src="demos.js" defer></script>
 </head>
-<body class="demo demo-1" id="top">
-<div class="demo-banner"><a href="work.html">← Clearframe Web portfolio</a><span>Concept site</span></div>
-<header class="wrap"><a class="brand" href="#top">Morrow Goods</a><a href="#explore">The collection ↓</a></header>
-<main id="main"><section class="demo-hero wrap"><div><p class="demo-tag">Objects for the everyday</p><h1>Made to be kept.</h1><p>A small collection of ceramics and homewares with warm tones and simple forms.</p><a class="demo-button" href="#explore">Browse the collection ↓</a></div><div class="demo-art" aria-hidden="true"><div class="vase"></div></div></section>
-<section class="demo-content wrap" id="explore"><h2>The collection</h2><div class="demo-grid"><article><h3>Clay Vessel</h3><p>A softly rounded vessel with a warm terracotta finish.</p></article><article><h3>Everyday Cup</h3><p>A stoneware cup made for a slow morning coffee.</p></article><article><h3>Low Bowl</h3><p>A shallow bowl with a wide rim and a satin glaze.</p></article></div></section>
-</main><footer class="wrap"><a href="work.html">← All examples</a><a href="contact.html">Plan a similar website ↗</a></footer>
+<body class="store">
+<div class="preview"><a href="work.html">← Clearframe Web portfolio</a><span>Concept site</span></div>
+
+<header class="shell"><a class="logo" href="#">Morrow Goods</a><button class="pill" type="button" data-open-bag>Bag <span data-count>0</span></button></header>
+<main class="shell"><section class="shop-hero"><div class="shop-copy"><p class="label">The stoneware collection</p><h1>Made to<br>be kept.</h1><p>Quiet shapes and warm glazes for the things you do every day.</p><a class="pill" href="#collection">Shop the collection ↓</a></div><div class="pottery hero-pottery" aria-hidden="true"><div class="pot vessel"></div></div></section>
+<section id="collection"><div class="section-head"><h2>Stoneware</h2></div><div class="products">
+<article><div class="pottery"><div class="pot vessel" aria-hidden="true"></div></div><div class="product-info"><h3>Clay Vessel</h3><span>£48</span></div><button class="pill" type="button" data-product="Clay Vessel" data-price="48">Add to bag</button></article>
+<article><div class="pottery oat"><div class="pot cup" aria-hidden="true"></div></div><div class="product-info"><h3>Everyday Cup</h3><span>£18</span></div><button class="pill" type="button" data-product="Everyday Cup" data-price="18">Add to bag</button></article>
+<article><div class="pottery olive"><div class="pot bowl" aria-hidden="true"></div></div><div class="product-info"><h3>Low Bowl</h3><span>£32</span></div><button class="pill" type="button" data-product="Low Bowl" data-price="32">Add to bag</button></article>
+</div><p class="sr-only" data-added role="status"></p></section></main>
+<dialog class="bag" aria-labelledby="bag-title"><form method="dialog"><button class="pill" aria-label="Close bag">×</button></form><h2 id="bag-title">Your bag</h2><div data-items></div><p data-total></p><small>Demo shop. Purchases are disabled.</small></dialog>
+
+<footer class="shell"><a href="work.html">← All examples</a><a href="contact.html">Plan a similar website ↗</a></footer>
 </body></html>
