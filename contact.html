@@ -11,51 +11,74 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="studio-light-v4.css">
+<link rel="stylesheet" href="studio-light-v5.css">
 </head>
 <body id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap masthead">
-    <a class="brand" href="index.html?v=studio-light-v4" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a>
-    <nav class="primary-nav" aria-label="Main navigation"><a href="index.html?v=studio-light-v4">Home</a><a href="services.html?v=studio-light-v4">Services</a><a href="pricing.html?v=studio-light-v4">Packages</a><a href="work.html?v=studio-light-v4">Work</a><a href="process.html?v=studio-light-v4">Process</a></nav>
-    <a class="button header-action" href="contact.html?v=studio-light-v4" aria-current="page">Start a project <span aria-hidden="true">↗</span></a>
+    <a class="brand" href="index.html?v=studio-light-v5" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a>
+    <nav class="primary-nav" aria-label="Main navigation"><a href="index.html?v=studio-light-v5">Home</a><a href="services.html?v=studio-light-v5">Services</a><a href="pricing.html?v=studio-light-v5">Packages</a><a href="work.html?v=studio-light-v5">Work</a><a href="process.html?v=studio-light-v5">Process</a></nav>
+    <a class="button header-action" href="contact.html?v=studio-light-v5" aria-current="page">Start a project <span aria-hidden="true">↗</span></a>
   </div>
 </header>
 <main id="main">
 <section class="wrap contact-layout" id="contact">
   <div>
     <p class="eyebrow">Contact</p>
-    <h1>Tell me what you’re <em>building.</em></h1>
-    <p class="lede">Tell me about your business, what you want the site to do and when you’d like to launch.</p>
+    <h1>Tell me about <em>your business.</em></h1>
+    <p class="lede">A few details are enough to get started. I’ll use them to suggest the right package and work out a quote.</p>
   </div>
   <div class="contact-card">
     <h2>Email Clearframe Web</h2>
+    <p id="enquiry-context" hidden></p>
     <p><a class="text-link" id="contact-email" href="mailto:clearframewebstudio11@gmail.com?subject=Website%20enquiry">clearframewebstudio11@gmail.com</a></p>
     <div class="actions">
       <a class="button" id="open-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=clearframewebstudio11%40gmail.com&amp;su=Website%20enquiry">Open Gmail <span aria-hidden="true">↗</span></a>
       <a class="button secondary" id="open-outlook" href="https://outlook.live.com/mail/0/deeplink/compose?to=clearframewebstudio11%40gmail.com&amp;subject=Website%20enquiry">Open Outlook <span aria-hidden="true">↗</span></a>
     </div>
+    <p class="contact-hint">Your email opens with three prompts. Add what you know and send it when you’re ready.</p>
   </div>
 </section>
 <script>
-  const packageNames = new Map([["one-page","One-page website"],["business","Business website"],["shop","Online shop"]]);
-  const selectedPackage = packageNames.get(new URLSearchParams(window.location.search).get('package'));
-  if (selectedPackage) {
-    const subject = selectedPackage + ' enquiry';
-    for (const [id, field] of [['open-gmail', 'su'], ['open-outlook', 'subject'], ['contact-email', 'subject']]) {
-      const link = document.getElementById(id);
-      const url = new URL(link.href);
+  const query = new URLSearchParams(window.location.search);
+  const packages = new Map([
+    ['one-page', 'One-page website'], ['business', 'Business website'], ['shop', 'Online shop']
+  ]);
+  const demos = new Map([
+    ['restaurants', 'Nostimo'], ['architecture', 'Form & Field'], ['shops', 'Morrow Goods'], ['fitness', 'Stride Club']
+  ]);
+  const selectedPackage = packages.get(query.get('package'));
+  const selectedDemo = demos.get(query.get('demo'));
+  const subject = selectedPackage ? selectedPackage + ' enquiry'
+    : selectedDemo ? 'Website enquiry inspired by ' + selectedDemo : 'Website enquiry';
+  const details = selectedDemo ? 'I tried the ' + selectedDemo + ' demo.\n\n' : '';
+  const body = 'Hi Clearframe Web,\n\n' + details +
+    'My business name and what we do:\n\n' +
+    'What I’d like customers to do on the website:\n\n' +
+    'When I’d like to launch:\n';
+  const context = document.getElementById('enquiry-context');
+  if (selectedPackage || selectedDemo) {
+    context.textContent = selectedPackage || 'Inspired by the ' + selectedDemo + ' demo';
+    context.hidden = false;
+  }
+  for (const [id, field] of [['open-gmail', 'su'], ['open-outlook', 'subject'], ['contact-email', 'subject']]) {
+    const link = document.getElementById(id);
+    const url = new URL(link.href);
+    if (url.protocol === 'mailto:') {
+      url.search = '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    } else {
       url.searchParams.set(field, subject);
-      link.href = url.href;
+      url.searchParams.set('body', body);
     }
+    link.href = url.href;
   }
 </script>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div><a class="brand" href="index.html?v=studio-light-v4" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a><p>Independent web design for small businesses.</p></div>
-    <nav aria-label="Footer navigation"><a href="index.html?v=studio-light-v4">Home</a><a href="services.html?v=studio-light-v4">Services</a><a href="pricing.html?v=studio-light-v4">Packages</a><a href="work.html?v=studio-light-v4">Work</a><a href="process.html?v=studio-light-v4">Process</a><a href="contact.html?v=studio-light-v4">Contact</a></nav>
+    <div><a class="brand" href="index.html?v=studio-light-v5" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a><p>Independent web design for small businesses.</p></div>
+    <nav aria-label="Footer navigation"><a href="index.html?v=studio-light-v5">Home</a><a href="services.html?v=studio-light-v5">Services</a><a href="pricing.html?v=studio-light-v5">Packages</a><a href="work.html?v=studio-light-v5">Work</a><a href="process.html?v=studio-light-v5">Process</a><a href="contact.html?v=studio-light-v5">Contact</a></nav>
     <div class="footer-email"><a href="mailto:clearframewebstudio11@gmail.com">clearframewebstudio11@gmail.com</a><a href="#top">Back to top ↑</a></div>
   </div>
 </footer>
