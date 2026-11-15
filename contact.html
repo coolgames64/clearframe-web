@@ -1,26 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Email Clearframe Web about your website.">
-<meta name="theme-color" content="#111110">
+<meta name="description" content="Email Clearframe Web about your website in Gmail, Outlook or your preferred email app.">
+<meta name="theme-color" content="#ffffff">
 <title>Contact | Clearframe Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body id="top">
-<a href="#main" class="skip button">Skip to content</a>
-<div class="top"><header class="wrap"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">↗</span>Clearframe Web</a><nav aria-label="Main navigation"><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html" aria-current="page">Contact</a></nav><a class="button outline" href="contact.html">Start a project <span aria-hidden="true">↗</span></a></header></div>
-<main id="main">
-<section class="contact wrap interior" id="contact">
-  <span class="eyebrow">Project enquiries</span>
-  <h1>Tell me what you’re building.</h1>
-  <p>Tell me about your business and what you’d like your website to do.</p>
-  <div class="actions">
-    <a class="button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=clearframewebstudio11%40gmail.com&amp;su=Website%20enquiry">Open Gmail <span aria-hidden="true">↗</span></a>
-    <a class="button outline" href="https://outlook.live.com/mail/0/deeplink/compose?to=clearframewebstudio11%40gmail.com&amp;subject=Website%20enquiry">Open Outlook <span aria-hidden="true">↗</span></a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap masthead">
+    <a class="brand" href="index.html" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a>
+    <nav class="primary-nav" aria-label="Main navigation"><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="work.html">Work</a><a href="process.html">Process</a></nav>
+    <a class="button header-action" href="contact.html" aria-current="page">Start a project <span aria-hidden="true">↗</span></a>
   </div>
-  <p><a class="textlink" href="mailto:clearframewebstudio11@gmail.com?subject=Website%20enquiry">clearframewebstudio11@gmail.com</a></p>
+</header>
+<main id="main">
+<section class="wrap contact-layout" id="contact">
+  <div>
+    <p class="eyebrow">Contact</p>
+    <h1>Tell me what you’re <em>building.</em></h1>
+    <p class="lede">Tell me about your business, what you want the site to do and when you’d like to launch.</p>
+  </div>
+  <div class="contact-card">
+    <h2>Email Clearframe Web</h2>
+    <p><a class="text-link" id="contact-email" href="mailto:clearframewebstudio11@gmail.com?subject=Website%20enquiry">clearframewebstudio11@gmail.com</a></p>
+    <div class="actions">
+      <a class="button" id="open-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=clearframewebstudio11%40gmail.com&amp;su=Website%20enquiry">Open Gmail <span aria-hidden="true">↗</span></a>
+      <a class="button secondary" id="open-outlook" href="https://outlook.live.com/mail/0/deeplink/compose?to=clearframewebstudio11%40gmail.com&amp;subject=Website%20enquiry">Open Outlook <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
 </section>
-</main><div class="foot"><footer class="wrap"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">↗</span>Clearframe Web</a><a class="textlink" href="#top">Back to top ↑</a></footer></div>
-</body></html>
+<script>
+  const packageNames = new Map([["one-page","One-page website"],["business","Business website"],["shop","Online shop"]]);
+  const selectedPackage = packageNames.get(new URLSearchParams(window.location.search).get('package'));
+  if (selectedPackage) {
+    const subject = selectedPackage + ' enquiry';
+    for (const [id, field] of [['open-gmail', 'su'], ['open-outlook', 'subject'], ['contact-email', 'subject']]) {
+      const link = document.getElementById(id);
+      const url = new URL(link.href);
+      url.searchParams.set(field, subject);
+      link.href = url.href;
+    }
+  }
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div><a class="brand" href="index.html" aria-label="Clearframe Web home"><span class="brand-mark" aria-hidden="true"></span><span>Clearframe <span>Web</span></span></a><p>Independent web design for small businesses.</p></div>
+    <nav aria-label="Footer navigation"><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="work.html">Work</a><a href="process.html">Process</a><a href="contact.html">Contact</a></nav>
+    <div class="footer-email"><a href="mailto:clearframewebstudio11@gmail.com">clearframewebstudio11@gmail.com</a><a href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+</body>
+</html>
