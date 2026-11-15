@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Browse three stoneware pieces and try the demo shopping bag.">
+<title>Collection | Morrow Goods</title>
+<link rel="stylesheet" href="demos.css">
+<script defer src="demos.js"></script>
+</head>
+<body class="store demo">
+<div class="preview"><a href="work.html">← Clearframe Web portfolio</a><span>Concept site</span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="shell demo-header">
+<a class="logo" href="morrow-goods.html">Morrow Goods</a>
+<nav aria-label="Morrow Goods navigation"><a href="morrow-goods.html">Home</a>
+<a href="morrow-collection.html" aria-current="page">Collection</a>
+<a href="morrow-care.html">Care guide</a></nav>
+<button class="pill" type="button" data-open-bag>Bag <span data-count>0</span></button>
+</header>
+<main id="main"><section class="shell page-intro"><p class="label">Morrow Goods</p><h1>Everyday stoneware.</h1><p>Three pieces in clay, oat and olive. Add an item to try the demo shopping bag.</p></section><section class="shell collection-page" id="collection"><div class="section-head"><h2>Shop stoneware</h2></div><div class="products">
+<article><div class="pottery"><div class="pot vessel" aria-hidden="true"></div></div><div class="product-info"><h3>Clay Vessel</h3><span>£48</span></div><button class="pill" type="button" data-product="Clay Vessel" data-price="48">Add to bag</button></article>
+<article><div class="pottery oat"><div class="pot cup" aria-hidden="true"></div></div><div class="product-info"><h3>Everyday Cup</h3><span>£18</span></div><button class="pill" type="button" data-product="Everyday Cup" data-price="18">Add to bag</button></article>
+<article><div class="pottery olive"><div class="pot bowl" aria-hidden="true"></div></div><div class="product-info"><h3>Low Bowl</h3><span>£32</span></div><button class="pill" type="button" data-product="Low Bowl" data-price="32">Add to bag</button></article>
+</div><p class="sr-only" data-added role="status"></p></section></main>
+<dialog class="bag" aria-labelledby="bag-title"><form method="dialog"><button class="pill" aria-label="Close bag">×</button></form><h2 id="bag-title">Your bag</h2><div data-items></div><p data-total></p><small>Demo shop. Purchases are disabled.</small></dialog>
+<footer class="shell demo-footer"><a href="work.html">← All examples</a><a href="contact.html">Plan a similar website ↗</a></footer>
+</body>
+</html>
