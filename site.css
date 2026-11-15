@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --white: #fff;
   --ink: #17243a;
   --muted: #4e5e72;
@@ -12,6 +12,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+html { background: var(--white); }
 body { margin: 0; background: var(--white); color: var(--ink); font: 16px/1.6 var(--body); }
 a { color: inherit; }
 h1, h2, h3, p, figure, ol, ul { margin: 0; }
@@ -121,7 +122,10 @@ a:focus-visible, summary:focus-visible, .table-wrap:focus-visible { outline: 2px
 .split-hero figure { min-width: 0; }
 .split-hero figcaption { margin-top: 7px; color: var(--muted); font-size: 12px; }
 .page-intro { padding-block: clamp(55px, 8vw, 116px); }
-.pricing-hero h1 { max-width: 13ch; }
+.package-intro { padding-top: clamp(44px, 6vw, 82px); padding-bottom: 26px; }
+.package-intro h1 { max-width: none; font-size: clamp(47px, 6.1vw, 84px); }
+.package-intro .lede { max-width: 56ch; }
+.package-section { padding-top: 0; }
 .preview-scene {
   position: relative;
   display: grid;
@@ -143,7 +147,6 @@ a:focus-visible, summary:focus-visible, .table-wrap:focus-visible { outline: 2px
   transform: rotate(-20deg);
   z-index: -1;
 }
-.preview-scene.compact { aspect-ratio: 1.35; }
 .preview-desktop {
   margin-inline: 7% 16%;
   border: 1px solid #b2bfd1;
@@ -219,7 +222,7 @@ a:focus-visible, summary:focus-visible, .table-wrap:focus-visible { outline: 2px
   border: 1px solid var(--line);
   border-radius: 12px;
 }
-.package-card:nth-child(2) { background: var(--wash); border-color: #c4d3e9; }
+.package-card:nth-child(2) { background: var(--white); border-color: var(--blue); }
 .package-card .package-label { color: var(--blue); font-size: .8rem; font-weight: 700; }
 .package-card .package-price { color: var(--ink); font-size: clamp(23px, 3vw, 36px); line-height: 1.06; letter-spacing: -.05em; font-weight: 700; }
 .package-card ul, .service-list ul { padding: 0; list-style: none; }
