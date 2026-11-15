@@ -57,3 +57,9 @@
  .stride .classes article span{display:none}
  .demo .section-head{align-items:baseline}
 }
+
+.store .product-spec {
+  margin: 0 0 14px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
