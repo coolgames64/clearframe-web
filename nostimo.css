@@ -80,7 +80,10 @@ img { display: block; width: 100%; object-fit: cover; }
 .menu-group h2 { font-size: clamp(45px, 6vw, 82px); }
 .dish-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 38px; margin-top: 19px; }
 .dish-grid article { padding-block: 15px; border-top: 1px solid var(--line); }
-.dish-grid h3 { font-size: clamp(28px, 3.5vw, 42px); }
+.dish-grid h3 { font-size: clamp(28px, 3.5vw, 42px); overflow-wrap: anywhere; }
+.dish-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.dish-price { flex: none; color: var(--red); font-weight: 700; font-variant-numeric: tabular-nums; }
+.menu-note { margin-top: 12px; font-size: .875rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .visit-intro { padding-block: clamp(55px, 9vw, 135px) 40px; }
 .visit-grid { padding-bottom: clamp(55px, 9vw, 135px); }
