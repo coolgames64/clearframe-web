@@ -57,3 +57,13 @@
  .stride .classes article span{display:none}
  .demo .section-head{align-items:baseline}
 }
+
+.stride #strength-foundations {
+  scroll-margin-block: 1rem;
+}
+.stride #strength-foundations:target,
+.stride #strength-foundations:focus-visible {
+  background-color: #2d211f;
+  outline: 2px solid #ff926d;
+  outline-offset: 4px;
+}
