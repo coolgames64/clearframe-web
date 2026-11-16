@@ -86,6 +86,13 @@ if (bag) {
     if (!quantity) list.textContent = 'Your bag is empty.';
     count.textContent = quantity;
     total.textContent = 'Subtotal £' + price;
+    for (const button of products) {
+      const indicator = button.parentElement.querySelector('[data-product-bag-count]');
+      if (!indicator) continue;
+      const inBag = items.get(button.dataset.product)?.quantity ?? 0;
+      indicator.hidden = inBag === 0;
+      indicator.textContent = inBag ? inBag + ' in bag' : '';
+    }
   }
   document.querySelector('[data-open-bag]').addEventListener('click', () => {
     renderBag();
