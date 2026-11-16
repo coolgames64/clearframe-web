@@ -6,11 +6,14 @@ if (gallery) {
     ['Riverside Apartment', 'A pared-back interior makes room for living, reading, and gathering.', 'Bright apartment living room', '1600607687939-ce8a6c25118c']
   ];
   const image = gallery.querySelector('[data-image]');
+  const picker = gallery.querySelector('[data-project-picker]');
+  const options = picker ? [...picker.querySelectorAll('button')] : [];
   image.addEventListener('error', () => { image.hidden = true; });
   if (image.complete && !image.naturalWidth) image.hidden = true;
   let index = 0;
-  function move(step) {
-    index = (index + step + slides.length) % slides.length;
+  function showProject(nextIndex) {
+    index = (nextIndex + slides.length) % slides.length;
+    options.forEach((button, position) => button.setAttribute('aria-pressed', position === index));
     const [title, detail, alt, photo] = slides[index];
     gallery.querySelector('[data-title]').textContent = title;
     gallery.querySelector('[data-detail]').textContent = detail;
@@ -19,8 +22,12 @@ if (gallery) {
     image.alt = alt;
     image.src = 'https://images.unsplash.com/photo-' + photo + '?auto=format&fit=crop&w=1500&q=85';
   }
-  gallery.querySelector('[data-prev]').addEventListener('click', () => move(-1));
-  gallery.querySelector('[data-next]').addEventListener('click', () => move(1));
+  options.forEach((button, position) => {
+    button.addEventListener('click', () => showProject(position));
+  });
+  if (picker) picker.hidden = false;
+  gallery.querySelector('[data-prev]').addEventListener('click', () => showProject(index - 1));
+  gallery.querySelector('[data-next]').addEventListener('click', () => showProject(index + 1));
 }
 
 const bag = document.querySelector('.bag');
