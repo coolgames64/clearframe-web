@@ -131,16 +131,22 @@ if (bag) {
   });
 }
 
-const filters = document.querySelectorAll('[data-filter]');
+const filters = [...document.querySelectorAll('[data-filter]')];
 if (filters.length) {
   const classes = [...document.querySelectorAll('[data-kind]')];
   const results = document.querySelector('[data-results]');
-  filters.forEach(button => {
-    button.addEventListener('click', () => {
-      const type = button.dataset.filter;
-      filters.forEach(filter => filter.setAttribute('aria-pressed', filter === button));
-      classes.forEach(item => { item.hidden = type !== 'all' && item.dataset.kind !== type; });
-      results.textContent = classes.filter(item => !item.hidden).length + ' classes shown.';
-    });
-  });
+  function showClasses(button) {
+    const type = button.dataset.filter;
+    filters.forEach(filter => filter.setAttribute('aria-pressed', filter === button));
+    classes.forEach(item => { item.hidden = type !== 'all' && item.dataset.kind !== type; });
+    const count = classes.filter(item => !item.hidden).length;
+    results.textContent = count === 1 ? '1 class shown.' : count + ' classes shown.';
+  }
+
+  filters.forEach(button => button.addEventListener('click', () => showClasses(button)));
+  if (!location.hash || location.hash === '#timetable') {
+    const type = new URLSearchParams(location.search).get('training');
+    const initialFilter = filters.find(button => button.dataset.filter === type);
+    if (initialFilter) showClasses(initialFilter);
+  }
 }
