@@ -254,7 +254,6 @@ function changeQuantity(action, rawIndex) {
 
 for (const filter of filters) filter.addEventListener('click', () => selectCategory(filter.dataset.category));
 sort.addEventListener('change', renderCatalogue);
-document.querySelector('[data-shop-category]').addEventListener('click', event => selectCategory(event.currentTarget.dataset.shopCategory));
 products.addEventListener('click', event => {
   const button = event.target.closest('[data-product]');
   if (button) openProduct(productById.get(button.dataset.product));
@@ -316,4 +315,6 @@ basketContent.addEventListener('change', event => {
 });
 
 saveBasket();
-renderCatalogue();
+const entry = new URLSearchParams(window.location.search);
+selectCategory(['coffee', 'gear', 'gifts'].includes(entry.get('category')) ? entry.get('category') : 'all');
+if (entry.get('basket') === '1') showBasket();
