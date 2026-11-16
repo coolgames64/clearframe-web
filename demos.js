@@ -25,11 +25,38 @@ if (gallery) {
 
 const bag = document.querySelector('.bag');
 if (bag) {
-  const items = new Map();
+  const storageKey = 'morrow-demo-bag';
+  const products = [...document.querySelectorAll('[data-product]')];
+  let items = new Map();
   const count = document.querySelector('[data-count]');
   const list = bag.querySelector('[data-items]');
   const total = bag.querySelector('[data-total]');
   const added = document.querySelector('[data-added]');
+  function restoreBag() {
+    try {
+      const quantities = JSON.parse(sessionStorage.getItem(storageKey));
+      const restored = new Map();
+      for (const [name, quantity] of Object.entries(quantities ?? {})) {
+        const product = products.find(button => button.dataset.product === name);
+        if (product && Number.isSafeInteger(quantity) && quantity > 0) {
+          restored.set(name, {price: Number(product.dataset.price), quantity});
+        }
+      }
+      items = restored;
+    } catch {
+      // Browsers may deny storage access. Keep the current bag usable.
+    }
+  }
+
+  function saveBag() {
+    try {
+      const quantities = Object.fromEntries([...items].map(([name, item]) => [name, item.quantity]));
+      sessionStorage.setItem(storageKey, JSON.stringify(quantities));
+    } catch {
+      // The current page keeps its bag even if storage is unavailable.
+    }
+  }
+
   function renderBag() {
     let quantity = 0;
     let price = 0;
@@ -49,6 +76,7 @@ if (bag) {
       remove.addEventListener('click', () => {
         item.quantity -= 1;
         if (!item.quantity) items.delete(name);
+        saveBag();
         renderBag();
         (list.querySelector('button') || bag.querySelector('form button')).focus();
       });
@@ -63,15 +91,24 @@ if (bag) {
     renderBag();
     bag.showModal();
   });
-  document.querySelectorAll('[data-product]').forEach(button => {
+  products.forEach(button => {
     button.addEventListener('click', () => {
       const name = button.dataset.product;
       const item = items.get(name) || {price: Number(button.dataset.price), quantity: 0};
       item.quantity += 1;
       items.set(name, item);
+      saveBag();
       renderBag();
       added.textContent = name + ' added. ' + count.textContent + ' items in your bag.';
     });
+  });
+  restoreBag();
+  renderBag();
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) {
+      restoreBag();
+      renderBag();
+    }
   });
 }
 
