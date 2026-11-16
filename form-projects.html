@@ -25,8 +25,12 @@
 .project-picker .pill[aria-pressed="true"]:focus-visible {
   outline-color: #465e47;
 }
+.project-brief-target:focus-visible {
+  outline: 2px solid #465e47;
+  outline-offset: 4px;
+}
 </style>
-<script defer src="demos.js?v=form-project-picker"></script>
+<script defer src="demos.js?v=form-brief-links"></script>
 </head>
 <body class="studio demo">
 <div class="preview"><a href="work.html">← Clearframe Web portfolio</a><span>Concept site</span></div>
@@ -46,21 +50,22 @@
   <button class="pill" type="button" aria-pressed="false">Riverside Apartment</button>
 </div>
 <div class="gallery-frame"><img data-image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;w=1500&amp;q=85" alt="Contemporary house with large windows"><div class="gallery-controls"><button type="button" data-prev aria-label="Previous project">←</button><button type="button" data-next aria-label="Next project">→</button></div></div>
-<div class="feature-caption" aria-live="polite"><h3 data-title>Courtyard House</h3><p data-detail>A quiet courtyard brings daylight into the heart of this family home.</p></div></section><section class="shell editorial" id="project-briefs" aria-labelledby="project-briefs-title" tabindex="-1">
+<div class="feature-caption" aria-live="polite"><h3 data-title>Courtyard House</h3><p data-detail>A quiet courtyard brings daylight into the heart of this family home.</p></div>
+<a class="pill" data-project-brief href="#brief-courtyard-house" aria-label="Read the project brief for Courtyard House">Read the project brief</a></section><section class="shell editorial" id="project-briefs" aria-labelledby="project-briefs-title" tabindex="-1">
   <h2 id="project-briefs-title">Project briefs</h2>
   <div class="editorial-grid">
     <article>
-      <h3>Courtyard House</h3>
+      <h3 class="project-brief-target" id="brief-courtyard-house" tabindex="-1">Courtyard House</h3>
       <p><strong>Brief.</strong> Bring daylight into the middle of a deep family home.</p>
       <p><strong>Design response.</strong> Set an open courtyard between the kitchen and living room so both can borrow light from a new exterior edge.</p>
     </article>
     <article>
-      <h3>The Workshop</h3>
+      <h3 class="project-brief-target" id="brief-the-workshop" tabindex="-1">The Workshop</h3>
       <p><strong>Brief.</strong> Make room for a workbench without letting tools take over the living space.</p>
       <p><strong>Design response.</strong> Put the bench by the window for task light and give tools a full-height storage wall within reach.</p>
     </article>
     <article>
-      <h3>Riverside Apartment</h3>
+      <h3 class="project-brief-target" id="brief-riverside-apartment" tabindex="-1">Riverside Apartment</h3>
       <p><strong>Brief.</strong> Keep the river view visible from the living and dining areas.</p>
       <p><strong>Design response.</strong> Group tall storage along the internal wall and keep furniture low beside the glazing.</p>
     </article>
