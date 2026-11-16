@@ -1,11 +1,12 @@
 const gallery = document.querySelector('[data-gallery]');
 if (gallery) {
   const slides = [
-    ['Courtyard House', 'A quiet courtyard brings daylight into the heart of this family home.', 'Contemporary house with large windows', '1600596542815-ffad4c1539a9'],
-    ['The Workshop', 'A former workshop reimagined as a flexible place to live and work.', 'Contemporary interior with natural materials', '1600210492486-724fe5c67fb0'],
-    ['Riverside Apartment', 'A pared-back interior makes room for living, reading, and gathering.', 'Bright apartment living room', '1600607687939-ce8a6c25118c']
+    ['courtyard-house', 'Courtyard House', 'A quiet courtyard brings daylight into the heart of this family home.', 'Contemporary house with large windows', '1600596542815-ffad4c1539a9'],
+    ['the-workshop', 'The Workshop', 'A former workshop reimagined as a flexible place to live and work.', 'Contemporary interior with natural materials', '1600210492486-724fe5c67fb0'],
+    ['riverside-apartment', 'Riverside Apartment', 'A pared-back interior makes room for living, reading, and gathering.', 'Bright apartment living room', '1600607687939-ce8a6c25118c']
   ];
   const image = gallery.querySelector('[data-image]');
+  const brief = gallery.querySelector('[data-project-brief]');
   const picker = gallery.querySelector('[data-project-picker]');
   const options = picker ? [...picker.querySelectorAll('button')] : [];
   image.addEventListener('error', () => { image.hidden = true; });
@@ -14,7 +15,11 @@ if (gallery) {
   function showProject(nextIndex) {
     index = (nextIndex + slides.length) % slides.length;
     options.forEach((button, position) => button.setAttribute('aria-pressed', position === index));
-    const [title, detail, alt, photo] = slides[index];
+    const [key, title, detail, alt, photo] = slides[index];
+    if (brief) {
+      brief.href = '#brief-' + key;
+      brief.setAttribute('aria-label', 'Read the project brief for ' + title);
+    }
     gallery.querySelector('[data-title]').textContent = title;
     gallery.querySelector('[data-detail]').textContent = detail;
     gallery.querySelector('[data-count]').textContent = '0' + (index + 1) + ' / 03';
