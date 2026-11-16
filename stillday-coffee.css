@@ -199,3 +199,16 @@ dialog::backdrop { background: #14241ab3; }
   html { scroll-behavior: auto; }
   .pack { transition: none; }
 }
+
+[aria-current="page"] { text-decoration-thickness: 2px; }
+a.basket-button { text-decoration: none; }
+.stillday-home-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; padding-block: clamp(30px,7vw,92px); }
+.stillday-home-links article { padding: clamp(20px,4vw,60px); background: #eee5d6; }
+.stillday-home-links article:nth-child(2) { background: #e1e8d9; }
+.stillday-home-links h2 { margin-block: 10px; font-size: clamp(2.6rem,5vw,4.8rem); }
+.stillday-home-links a { margin-top: 18px; }
+.shop h1, .brew h1 { margin-top: 9px; font-size: clamp(3.15rem, 8vw, 7rem); }
+.brew h1 em { color: #914831; font-weight: 400; }
+@media (max-width: 700px) {
+  .stillday-home-links { grid-template-columns: 1fr; }
+}
