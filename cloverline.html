@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Try a sample service-area check on Clearframe Web’s garden-care website concept.">
+<title>Cloverline Garden Care | Clearframe Web demo</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #193a2b;
+  --paper: #f7f5e8;
+  --key: #d6e682;
+  --line: #9ca991;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 Arial, sans-serif; }
+a { color: inherit; text-underline-offset: .22em; }
+:focus-visible { outline: 3px solid #9a3e17; outline-offset: 4px; }
+.skip { position: absolute; left: 12px; top: 8px; padding: 10px; background: white; z-index: 2; }
+.skip:not(:focus) { clip-path: inset(50%); }
+.wrap { width: min(1090px, calc(100% - 32px)); margin-inline: auto; }
+.preview { background: var(--key); }
+.preview .wrap, header, footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px 16px;
+}
+.preview .wrap { padding-block: 6px; font-size: .875rem; font-weight: 700; }
+header { padding-block: 14px; border-bottom: 1px solid var(--line); }
+header nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.preview a, header a, footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.brand { font-family: Georgia, serif; font-size: 1.55rem; font-weight: 700; text-decoration: none; }
+.hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 6vw, 76px); align-items: start; padding-block: clamp(36px, 8vw, 105px); }
+.hero-copy { padding-block: clamp(0px, 2vw, 24px); }
+.eyebrow { margin: 0; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; }
+h1, h2 { margin-block: 0; font-family: Georgia, serif; line-height: 1.07; font-weight: 400; }
+h1 { margin-top: 12px; font-size: clamp(2.7rem, 6vw, 5.4rem); letter-spacing: -.055em; }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -.035em; }
+.hero-copy p:not(.eyebrow) { max-width: 38ch; }
+.coverage { background: var(--ink); color: var(--paper); padding: clamp(20px, 4vw, 42px); border-radius: 28px 28px 28px 4px; scroll-margin-top: 16px; }
+.coverage :focus-visible { outline-color: var(--key); }
+.coverage .eyebrow { margin-bottom: 8px; color: var(--key); }
+.coverage form { margin-top: 22px; }
+.coverage label { display: block; font-weight: 700; }
+.coverage .hint { margin-block: 2px 8px; font-size: .875rem; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.controls input, .controls button { min-height: 45px; border-radius: 6px; border: 1px solid transparent; font: inherit; }
+.controls input { flex: 1 1 8rem; width: 100%; min-width: 0; padding: 8px 11px; }
+.controls button { flex: 1 0 auto; padding: 8px 14px; background: var(--key); color: var(--ink); font-weight: 700; cursor: pointer; }
+.controls button:hover { background: #e8f4a4; }
+#coverage-result { margin-block: 10px 0; font-weight: 700; }
+#coverage-result:empty { margin: 0; }
+.coverage-list { margin-block: 18px 0; padding-top: 12px; border-top: 1px solid #8fa692; font-size: .875rem; }
+.services { border-top: 1px solid var(--line); padding-block: 30px 50px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 36px; margin-top: 22px; }
+.services-grid article { border-top: 1px solid var(--line); padding-top: 12px; }
+.services-grid h3, .services-grid p { margin: 0; }
+.services-grid p { margin-top: 4px; }
+footer { padding-block: 16px; border-top: 1px solid var(--line); }
+@media (max-width: 680px) {
+  .hero, .services-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="preview"><div class="wrap"><a href="work.html#local-services">← Clearframe Web portfolio</a><span>Fictional business · Website demo</span></div></div>
+<header class="wrap">
+  <a class="brand" href="cloverline.html">Cloverline Garden Care</a>
+  <nav aria-label="Main navigation"><a href="#services">Garden care</a><a href="#coverage">Check coverage</a></nav>
+</header>
+<main id="main" class="wrap" tabindex="-1">
+  <div class="hero">
+    <section class="hero-copy" aria-labelledby="page-title">
+      <p class="eyebrow">Garden maintenance · South Manchester</p>
+      <h1 id="page-title">A garden you can keep on top of.</h1>
+      <p>Seasonal tidying, hedge care and regular visits for gardens that need a little more attention than the weekend allows.</p>
+    </section>
+    <section class="coverage" id="coverage" aria-labelledby="coverage-title" tabindex="-1">
+      <p class="eyebrow">Sample service area</p>
+      <h2 id="coverage-title">Do we cover your area?</h2>
+      <form id="coverage-form" hidden>
+        <label for="district">Postcode district</label>
+        <p class="hint" id="district-hint">Use the first part only, for example M20.</p>
+        <div class="controls">
+          <input id="district" type="text" placeholder="M20" required autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="district-hint coverage-result">
+          <button type="submit">Check area</button>
+        </div>
+        <p id="coverage-result" role="status"></p>
+      </form>
+      <p class="coverage-list">This demo covers M19, M20, M21 and SK4. The check runs on this page and does not send anything.</p>
+    </section>
+  </div>
+  <section id="services" class="services" aria-labelledby="services-title" tabindex="-1">
+    <h2 id="services-title">What a visit could cover</h2>
+    <div class="services-grid">
+      <article><h3>Regular upkeep</h3><p>Mowing, edging and keeping paths clear.</p></article>
+      <article><h3>Hedge and border care</h3><p>Trim back growth and tidy planted edges.</p></article>
+      <article><h3>Seasonal tidy</h3><p>Clear fallen leaves and make room for new growth.</p></article>
+    </div>
+  </section>
+</main>
+<footer class="wrap">
+  <a href="work.html#local-services">← All demos</a>
+  <a href="contact.html">Ask Clearframe about a similar website ↗</a>
+</footer>
+<script>
+const coverageForm = document.querySelector('#coverage-form');
+const districtInput = document.querySelector('#district');
+const coverageResult = document.querySelector('#coverage-result');
+const coveredDistricts = new Set(['M19', 'M20', 'M21', 'SK4']);
+
+districtInput.addEventListener('input', () => {
+  districtInput.removeAttribute('aria-invalid');
+  coverageResult.textContent = '';
+});
+coverageForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const district = districtInput.value.trim().toUpperCase();
+
+  if (!/^[A-Z]{1,2}[0-9][0-9A-Z]?$/.test(district)) {
+    districtInput.setAttribute('aria-invalid', 'true');
+    coverageResult.textContent = 'Enter only the first part of a postcode, such as M20.';
+    districtInput.focus();
+    return;
+  }
+
+  districtInput.removeAttribute('aria-invalid');
+  coverageResult.textContent = coveredDistricts.has(district)
+    ? district + ' is inside the sample service area.'
+    : district + ' is outside the sample service area.';
+});
+coverageForm.hidden = false;
+</script>
+</body>
+</html>
