@@ -43,6 +43,8 @@ if (bag) {
   const count = document.querySelector('[data-count]');
   const list = bag.querySelector('[data-items]');
   const total = bag.querySelector('[data-total]');
+  const empty = bag.querySelector('[data-empty-bag]');
+  const browse = bag.querySelector('[data-browse-collection]');
   const added = document.querySelector('[data-added]');
   function restoreBag() {
     try {
@@ -90,12 +92,14 @@ if (bag) {
         if (!item.quantity) items.delete(name);
         saveBag();
         renderBag();
-        (list.querySelector('button') || bag.querySelector('form button')).focus();
+        (list.querySelector('button') || browse || bag.querySelector('form button')).focus();
       });
       row.append(label, remove);
       list.append(row);
     }
-    if (!quantity) list.textContent = 'Your bag is empty.';
+    if (empty) empty.hidden = quantity > 0;
+    else if (!quantity) list.textContent = 'Your bag is empty.';
+    total.hidden = Boolean(empty && !quantity);
     count.textContent = quantity;
     total.textContent = 'Subtotal £' + price;
     for (const button of products) {
@@ -109,6 +113,11 @@ if (bag) {
   document.querySelector('[data-open-bag]').addEventListener('click', () => {
     renderBag();
     bag.showModal();
+    if (empty && !empty.hidden) browse?.focus();
+  });
+  browse?.addEventListener('click', () => {
+    bag.close();
+    document.getElementById('collection-title').focus();
   });
   products.forEach(button => {
     button.addEventListener('click', () => {

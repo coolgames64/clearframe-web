@@ -40,8 +40,19 @@
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+.store [data-empty-bag] {
+  margin-block: 12px 18px;
+}
+.store [data-browse-collection] {
+  margin-top: 10px;
+  min-height: 44px;
+}
+.store #collection-title:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
 </style>
-<script defer src="demos.js?v=morrow-card-count"></script>
+<script defer src="demos.js?v=morrow-empty-bag"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 <link rel="stylesheet" href="concept-editorial.css">
 </head>
@@ -55,7 +66,7 @@
 <a href="morrow-care.html">Care guide</a></nav>
 <button class="pill" type="button" data-open-bag>Bag <span data-count>0</span></button>
 </header>
-<main id="main"><section class="shell page-intro"><p class="label">Morrow Goods</p><h1>Everyday stoneware.</h1><p>Compare three pieces in clay, oat and olive. Sizes are illustrative, and the bag is for demonstration.</p></section><section class="shell collection-page" id="collection"><div class="section-head"><h2>Shop stoneware</h2></div><div class="products">
+<main id="main"><section class="shell page-intro"><p class="label">Morrow Goods</p><h1>Everyday stoneware.</h1><p>Compare three pieces in clay, oat and olive. Sizes are illustrative, and the bag is for demonstration.</p></section><section class="shell collection-page" id="collection"><div class="section-head"><h2 id="collection-title" tabindex="-1">Shop stoneware</h2></div><div class="products">
 <article>
   <div class="pottery"><div class="pot vessel" aria-hidden="true"></div></div>
   <div class="product-info"><h3>Clay Vessel</h3><span>£48</span></div>
@@ -86,7 +97,13 @@
 </div>
 <p class="collection-care"><a href="morrow-care.html">How to care for your stoneware</a></p>
 <p class="sr-only" data-added role="status"></p></section></main>
-<dialog class="bag" aria-labelledby="bag-title"><form method="dialog"><button class="pill" aria-label="Close bag">×</button></form><h2 id="bag-title">Your bag</h2><div data-items></div><p data-total></p><small>Demo shop. Purchases are disabled.</small></dialog>
+<dialog class="bag" aria-labelledby="bag-title"><form method="dialog"><button class="pill" aria-label="Close bag">×</button></form><h2 id="bag-title">Your bag</h2><div data-items></div>
+  <div data-empty-bag>
+    <p>Your bag is empty.</p>
+    <button type="button" class="pill" data-browse-collection>Browse stoneware</button>
+  </div>
+  <p data-total hidden></p>
+  <small>Demo shop. Purchases are disabled.</small></dialog>
 <footer class="shell demo-footer"><a href="work.html">← All examples</a><a href="contact.html">Plan a similar website ↗</a></footer>
 </body>
 </html>
