@@ -77,11 +77,19 @@ if (bag) {
     list.replaceChildren();
     for (const [name, item] of items) {
       quantity += item.quantity;
-      price += item.price * item.quantity;
+      const lineTotal = item.price * item.quantity;
+      price += lineTotal;
       const row = document.createElement('div');
       row.className = 'bag-item';
       const label = document.createElement('span');
       label.textContent = name + ' × ' + item.quantity;
+      const cost = document.createElement('small');
+      cost.className = 'bag-item-cost';
+      cost.textContent = item.quantity === 1
+        ? '£' + lineTotal
+        : '£' + item.price + ' each · £' + lineTotal + ' total';
+      const itemDetails = document.createElement('div');
+      itemDetails.append(label, cost);
       const remove = document.createElement('button');
       remove.type = 'button';
       remove.className = 'pill';
@@ -94,7 +102,7 @@ if (bag) {
         renderBag();
         (list.querySelector('button') || browse || bag.querySelector('form button')).focus();
       });
-      row.append(label, remove);
+      row.append(itemDetails, remove);
       list.append(row);
     }
     if (empty) empty.hidden = quantity > 0;
