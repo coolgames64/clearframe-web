@@ -57,11 +57,19 @@
   margin-block-start: 0.25rem;
   font-size: 0.875rem;
 }
-.store .bag-item > .pill {
+.store .bag-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   flex: 0 0 auto;
 }
+.store .bag-item-actions .pill {
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
 </style>
-<script defer src="demos.js?v=morrow-line-prices"></script>
+<script defer src="demos.js?v=morrow-bag-quantity"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 <link rel="stylesheet" href="concept-editorial.css">
 </head>
@@ -111,7 +119,7 @@
     <p>Your bag is empty.</p>
     <button type="button" class="pill" data-browse-collection>Browse stoneware</button>
   </div>
-  <p data-total hidden></p>
+  <p data-total aria-live="polite" aria-atomic="true" hidden></p>
   <small>Demo shop. Purchases are disabled.</small></dialog>
 <footer class="shell demo-footer"><a href="work.html">← All examples</a><a href="contact.html">Plan a similar website ↗</a></footer>
 </body>
