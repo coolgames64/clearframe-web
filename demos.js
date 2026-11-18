@@ -71,7 +71,8 @@ if (bag) {
     }
   }
 
-  function renderBag() {
+  function renderBag(focusedProduct, focusAction) {
+    let focusTarget;
     let quantity = 0;
     let price = 0;
     list.replaceChildren();
@@ -90,6 +91,16 @@ if (bag) {
         : '£' + item.price + ' each · £' + lineTotal + ' total';
       const itemDetails = document.createElement('div');
       itemDetails.append(label, cost);
+      const add = document.createElement('button');
+      add.type = 'button';
+      add.className = 'pill';
+      add.textContent = 'Add one';
+      add.setAttribute('aria-label', 'Add one ' + name);
+      add.addEventListener('click', () => {
+        item.quantity += 1;
+        saveBag();
+        renderBag(name, 'add');
+      });
       const remove = document.createElement('button');
       remove.type = 'button';
       remove.className = 'pill';
@@ -99,11 +110,14 @@ if (bag) {
         item.quantity -= 1;
         if (!item.quantity) items.delete(name);
         saveBag();
-        renderBag();
-        (list.querySelector('button') || browse || bag.querySelector('form button')).focus();
+        renderBag(name, 'remove');
       });
-      row.append(itemDetails, remove);
+      const actions = document.createElement('div');
+      actions.className = 'bag-item-actions';
+      actions.append(add, remove);
+      row.append(itemDetails, actions);
       list.append(row);
+      if (name === focusedProduct) focusTarget = focusAction === 'add' ? add : remove;
     }
     if (empty) empty.hidden = quantity > 0;
     else if (!quantity) list.textContent = 'Your bag is empty.';
@@ -116,6 +130,9 @@ if (bag) {
       const inBag = items.get(button.dataset.product)?.quantity ?? 0;
       indicator.hidden = inBag === 0;
       indicator.textContent = inBag ? inBag + ' in bag' : '';
+    }
+    if (focusedProduct) {
+      (focusTarget || list.querySelector('button') || browse || bag.querySelector('form button')).focus();
     }
   }
   document.querySelector('[data-open-bag]').addEventListener('click', () => {
