@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review your Birch &amp; Bloom coffee basket and try the sample checkout.">
+  <title>Basket | Birch &amp; Bloom</title>
+  <meta name="theme-color" content="#f5f0e4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shop.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="demo-bar">
+    <div class="wrap">
+      <span>Clearframe Web portfolio demo</span>
+      <a href="../../work.html#cafes">Back to portfolio</a>
+    </div>
+  </div>
+  <header class="wrap nav">
+    <a class="brand" href="index.html">Birch &amp; Bloom</a>
+    <nav class="nav-links" aria-label="Café navigation">
+      <a href="index.html#menu">Menu</a>
+      <a href="shop.html">Shop coffee</a>
+      <a href="index.html#visit">Visit</a>
+      <a class="basket-link" href="basket.html" aria-current="page">Basket <span data-basket-count>0</span></a>
+    </nav>
+  </header>
+  <main class="wrap basket-page" id="main">
+    <h1>Your basket</h1>
+    <noscript><p class="demo-note">Turn on JavaScript to use the sample basket.</p></noscript>
+    <div class="basket-layout">
+      <section aria-label="Coffee in your basket">
+        <div class="empty-basket" data-basket-empty>
+          <p>Your basket is empty.</p>
+          <a class="cta secondary" href="shop.html" data-empty-link>Browse coffee beans</a>
+        </div>
+        <ul class="basket-list" data-basket-items></ul>
+        <p class="shop-status" data-basket-status role="status" tabindex="-1"></p>
+      </section>
+      <form class="basket-summary" data-checkout>
+        <h2>Order summary</h2>
+        <label for="delivery">Delivery method</label>
+        <select id="delivery" name="delivery">
+          <option value="standard">UK standard delivery</option>
+          <option value="collect">Café collection</option>
+        </select>
+        <dl>
+          <div><dt>Subtotal</dt><dd data-subtotal>£0.00</dd></div>
+          <div><dt>Delivery</dt><dd data-delivery>£0.00</dd></div>
+          <div class="basket-total"><dt>Total</dt><dd data-total>£0.00</dd></div>
+        </dl>
+        <p class="demo-note">Sample delivery is £3.95, or free on orders of £30 or more. Café collection is free.</p>
+        <button class="cta" type="submit" disabled>Place demo order</button>
+        <p class="demo-note">This sample checkout takes no payments or personal details.</p>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <p>Birch &amp; Bloom is a fictional café and coffee shop.</p>
+      <a href="../../work.html#cafes">Back to Clearframe Web</a>
+    </div>
+  </footer>
+</body>
+</html>
