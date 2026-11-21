@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A concept website for a residential architecture and interiors studio.">
+<meta name="theme-color" content="#f5f2eb">
+<title>Courtyard Works | Residential Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--paper:#f5f2eb;--ink:#292821;--muted:#575348;--line:#c6c0b3;--accent:#a1432c;--serif:"Instrument Serif",Georgia,serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "DM Sans",Arial,sans-serif}
+img{display:block;width:100%;object-fit:cover}
+a{color:inherit;text-underline-offset:.28em}
+button,select{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #a1432c;outline-offset:4px}
+::selection{background:#e5bcaa;color:#292821}
+.skip{position:fixed;z-index:2;inset:1rem auto auto 1rem;background:white;padding:.65rem;transform:translateY(-180%)}
+.skip:focus{transform:none}
+.wrap{width:min(100% - 3rem, 78rem);margin-inline:auto}
+.demo-bar{background:#eae4d9;color:#463f34;font-size:.85rem}
+.demo-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:.4rem}
+.site-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.3rem;border-bottom:1px solid var(--line)}
+.wordmark{font:2rem/.95 var(--serif);text-decoration:none;letter-spacing:-.015em;white-space:nowrap}
+.site-header nav{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:end}
+.site-header nav a{font-size:.94rem;font-weight:600;text-decoration:none}
+.site-header nav a:hover{text-decoration:underline}
+.hero{padding-block:clamp(2.5rem,7vw,6rem) 0}
+.hero-text{display:grid;grid-template-columns:1.45fr 1fr;align-items:end;gap:1.5rem;margin-bottom:clamp(2rem,4vw,3rem)}
+h1,h2,h3{font:400 1em/.96 var(--serif);margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(3.6rem,8vw,8.1rem)}
+h1 em{color:var(--accent);font-weight:inherit}
+h2{font-size:clamp(3rem,6.6vw,5.75rem)}
+h3{font-size:clamp(1.85rem,4vw,2.7rem)}
+.hero-text p{max-width:29ch;margin:0 0 .9rem;color:var(--muted);font-size:1.06rem}
+.text-link{color:var(--accent);font-weight:700}
+.hero figure{margin:0}
+.hero img{aspect-ratio:2.2;max-height:43rem;min-height:17rem;object-position:50% 53%;background:#d4c9b6}
+.hero figcaption{font-size:.86rem;color:var(--muted);margin-top:.65rem}
+.projects{padding-block:clamp(4rem,8vw,7.5rem)}
+.section-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1.6rem;margin-bottom:1.75rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem}
+.filter{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:2rem;padding:.46rem .9rem}
+.filter[aria-pressed="true"],.filter:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.project{padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.project[hidden]{display:none}
+.project img{aspect-ratio:1.15;background:#dbd1c2;margin-bottom:1rem}
+.project p{margin:.45rem 0 .75rem;color:var(--muted)}
+.project button,.close{padding:0;border:0;background:none;color:var(--accent);text-decoration:underline;text-underline-offset:.26em;font-weight:700}
+.studio{background:#ded9cc;padding-block:clamp(3rem,7vw,6.25rem)}
+.studio .wrap,.enquiry{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,6rem)}
+.studio p,.enquiry p{margin:0 0 1rem;max-width:45ch}
+.enquiry{padding-block:clamp(3.5rem,8vw,7rem)}
+.enquiry h2{margin-bottom:1rem}
+form{display:grid;gap:1rem;align-content:start}
+label{display:grid;gap:.35rem;font-weight:700}
+select{width:100%;padding:.63rem .75rem;color:var(--ink);border:1px solid #8f8879;background:#fffdf9;border-radius:0;font-weight:400}
+.submit{justify-self:start;background:var(--accent);color:white;padding:.69rem 1.05rem;border:1px solid var(--accent);font-weight:700}
+.submit:hover{background:#743322}
+.status{color:#693421;min-height:1.6em}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.25rem;border-top:1px solid var(--line)}
+footer a{font-weight:700}
+dialog{width:min(calc(100% - 2rem),41rem);max-height:85vh;padding:clamp(1.2rem,4vw,2.5rem);border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+dialog::backdrop{background:#1f1b15ae}
+dialog img{aspect-ratio:1.6;max-height:40vh;margin:1rem 0;background:#dbd1c2}
+.dialog-head{display:flex;justify-content:space-between;gap:1rem}
+.close{align-self:start}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%);white-space:nowrap}
+@media(max-width:760px){.hero-text,.studio .wrap,.enquiry{grid-template-columns:1fr}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero img{aspect-ratio:1.55}.studio p:last-child{margin-bottom:0}}
+@media(max-width:500px){.wrap{width:calc(100% - 2rem)}.site-header{align-items:flex-start;flex-direction:column;padding-block:1rem}.site-header nav{justify-content:start}.project-grid{grid-template-columns:1fr}.demo-bar{font-size:.79rem}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar"><div class="wrap"><a href="../../work.html#architecture">Back to Clearframe Web</a><span>Architecture website demo</span></div></div>
+<header class="site-header wrap">
+  <a class="wordmark" href="#top">Courtyard Works</a>
+  <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#studio">Studio</a><a href="#enquiry">Enquire</a></nav>
+</header>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <h1 id="hero-title">Homes made for <em>living.</em></h1>
+      <div><p>Residential architecture and interiors shaped by the way you live, from the first sketch to the last detail.</p><a class="text-link" href="#projects">Explore our projects</a></div>
+    </div>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1800&amp;q=84" alt="A contemporary house opening onto a planted garden" width="1800" height="820" fetchpriority="high">
+      <figcaption>Project concept · Garden Court</figcaption>
+    </figure>
+  </section>
+  <section class="projects wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section-head">
+      <h2 id="projects-title">Selected projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter" type="button" aria-pressed="true" data-filter="all">All</button>
+        <button class="filter" type="button" aria-pressed="false" data-filter="new-builds">New builds</button>
+        <button class="filter" type="button" aria-pressed="false" data-filter="renovations">Renovations</button>
+        <button class="filter" type="button" aria-pressed="false" data-filter="interiors">Interiors</button>
+      </div>
+    </div>
+    <div class="sr-only" id="project-count" role="status"></div>
+    <div class="project-grid">
+      <article class="project" data-project="new-builds">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Garden and terrace outside a modern home" width="800" height="696" loading="lazy">
+        <h3>Garden Court</h3><p>New build</p>
+        <button type="button" data-details="A family home organised around a planted courtyard. Generous openings give the main living spaces a view of the garden throughout the day.">View Garden Court</button>
+      </article>
+      <article class="project" data-project="renovations">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="A bright living room with timber details and a large window" width="800" height="696" loading="lazy">
+        <h3>The Long Room</h3><p>Renovation</p>
+        <button type="button" data-details="A reworked ground floor that brings a kitchen, dining room and reading corner together. Built-in timber storage gives each part of the room a purpose.">View The Long Room</button>
+      </article>
+      <article class="project" data-project="interiors">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="A light-filled interior with a restrained palette of natural materials" width="800" height="696" loading="lazy">
+        <h3>Limehouse Flat</h3><p>Interiors</p>
+        <button type="button" data-details="A compact flat with a pared-back material palette and joinery designed around everyday routines. Concealed storage keeps a small living area open and adaptable.">View Limehouse Flat</button>
+      </article>
+    </div>
+  </section>
+  <section class="studio" id="studio" aria-labelledby="studio-title"><div class="wrap">
+    <h2 id="studio-title">The studio</h2>
+    <div><p>We design one-off homes, thoughtful renovations and interiors. We start by listening to how you use your space and what you would like it to do better.</p><p>From planning drawings to material choices, we work through each decision with you so that you can see how the design takes shape.</p></div>
+  </div></section>
+  <section class="enquiry wrap" id="enquiry" aria-labelledby="enquiry-title">
+    <div><h2 id="enquiry-title">Tell us about your project</h2><p>Choose a project type and a timeframe to preview an enquiry.</p></div>
+    <form id="enquiry-form">
+      <label>What are you planning?
+        <select name="project" required><option value="">Select a project type</option><option>New build</option><option>Renovation or extension</option><option>Interiors</option></select>
+      </label>
+      <label>When would you like to start?
+        <select name="timing" required><option value="">Select a timeframe</option><option>Within 3 months</option><option>In 3–6 months</option><option>In 6 months or more</option><option>Still exploring</option></select>
+      </label>
+      <button class="submit" type="submit">Preview enquiry</button>
+      <p id="enquiry-result" class="status" role="status"></p>
+    </form>
+  </section>
+</main>
+<footer><div class="wrap"><span class="wordmark">Courtyard Works</span><a href="../../work.html#architecture">Clearframe Web demos</a></div></footer>
+<dialog id="project-dialog" aria-labelledby="project-dialog-title">
+  <div class="dialog-head"><h3 id="project-dialog-title"></h3><form method="dialog"><button class="close" type="submit">Close</button></form></div>
+  <img id="project-dialog-image" alt="">
+  <p id="project-dialog-copy"></p>
+</dialog>
+<script>
+const filters = document.querySelectorAll('[data-filter]');
+const projects = document.querySelectorAll('[data-project]');
+const projectCount = document.querySelector('#project-count');
+for (const filter of filters) {
+  filter.addEventListener('click', () => {
+    for (const button of filters) button.setAttribute('aria-pressed', String(button === filter));
+    for (const project of projects) {
+      project.hidden = filter.dataset.filter !== 'all' && project.dataset.project !== filter.dataset.filter;
+    }
+    const count = document.querySelectorAll('[data-project]:not([hidden])').length;
+    projectCount.textContent = count === 1 ? '1 project shown' : count + ' projects shown';
+  });
+}
+
+const dialog = document.querySelector('#project-dialog');
+const dialogTitle = document.querySelector('#project-dialog-title');
+const dialogImage = document.querySelector('#project-dialog-image');
+const dialogCopy = document.querySelector('#project-dialog-copy');
+for (const project of projects) {
+  project.querySelector('button').addEventListener('click', (event) => {
+    const image = project.querySelector('img');
+    dialogTitle.textContent = project.querySelector('h3').textContent;
+    dialogImage.src = image.src;
+    dialogImage.alt = image.alt;
+    dialogCopy.textContent = event.currentTarget.dataset.details;
+    dialog.showModal();
+  });
+}
+
+document.querySelector('#enquiry-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const values = new FormData(event.currentTarget);
+  document.querySelector('#enquiry-result').textContent = 'Demo enquiry prepared. Project type: ' + values.get('project') + '. Timeframe: ' + values.get('timing') + '.';
+});
+</script>
+</body>
+</html>
