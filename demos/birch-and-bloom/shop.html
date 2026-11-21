@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore three sample coffees from Birch &amp; Bloom, choose a grind and try the demo checkout.">
+  <meta name="theme-color" content="#f5f0e4">
+  <title>Shop coffee beans | Birch &amp; Bloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shop.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="demo-bar">
+    <div class="wrap">
+      <span>Clearframe Web portfolio demo</span>
+      <a href="../../work.html#cafes">Back to portfolio</a>
+    </div>
+  </div>
+  <header class="wrap nav">
+    <a class="brand" href="index.html">Birch &amp; Bloom</a>
+    <nav class="nav-links" aria-label="Café navigation">
+      <a href="index.html#menu">Menu</a>
+      <a href="shop.html" aria-current="page">Shop coffee</a>
+      <a href="index.html#visit">Visit</a>
+      <a class="basket-link" href="basket.html">Basket <span data-basket-count>0</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="wrap shop-hero" aria-labelledby="shop-title">
+      <div class="shop-intro">
+        <p class="eyebrow">The Birch &amp; Bloom coffee shop</p>
+        <h1 id="shop-title">Good coffee,<br><em>at home.</em></h1>
+        <p>Take home the beans behind your café favourite, from our chocolatey house blend to a brighter filter roast. Choose whole bean or ground.</p>
+        <a class="cta" href="#coffees">Browse the coffees</a>
+      </div>
+      <img src="https://images.unsplash.com/photo-1774801935463-15275f0bcc8f?auto=format&amp;fit=crop&amp;w=1200&amp;q=82" alt="A handful of roasted coffee beans above an open paper bag" width="1200" height="900" fetchpriority="high">
+    </section>
+
+    <section class="coffee-section" id="coffees" aria-labelledby="coffees-title">
+      <div class="wrap">
+        <div class="collection-heading">
+          <h2 id="coffees-title">Shop the beans</h2>
+          <p class="demo-note">Sample products and prices. Checkout is a simulation.</p>
+        </div>
+        <noscript><p class="demo-note">Enable JavaScript to add coffee to the demo basket.</p></noscript>
+
+        <div class="product-grid">
+          <article class="coffee-card">
+            <img src="https://images.unsplash.com/photo-1774801935511-27e25187f12d?auto=format&amp;fit=crop&amp;w=680&amp;q=78" alt="" width="680" height="510" loading="lazy">
+            <div class="coffee-card-body">
+              <p class="eyebrow">Medium roast · 250 g</p>
+              <div class="product-title"><h3>House Blend</h3><span class="price">£11.50</span></div>
+              <p class="tasting-notes">Milk chocolate, hazelnut and caramel.</p>
+              <p>Our everyday espresso, with enough body for a flat white.</p>
+              <form data-product="house-blend">
+                <label for="house-grind">Grind</label>
+                <select id="house-grind" name="grind">
+                  <option value="whole-bean">Whole bean</option>
+                  <option value="ground">Ground</option>
+                </select>
+                <button type="submit" class="cta" aria-label="Add House Blend to basket" disabled>Add to basket</button>
+                <p class="shop-status" data-shop-status role="status"></p>
+                <a class="view-basket" href="basket.html" hidden>View basket</a>
+              </form>
+            </div>
+          </article>
+
+          <article class="coffee-card">
+            <img class="filter-photo" src="https://images.unsplash.com/photo-1741908494446-23d1550a1bca?auto=format&amp;fit=crop&amp;w=680&amp;q=78" alt="" width="680" height="510" loading="lazy">
+            <div class="coffee-card-body">
+              <p class="eyebrow">Light roast · 250 g</p>
+              <div class="product-title"><h3>Bright Filter</h3><span class="price">£13.00</span></div>
+              <p class="tasting-notes">Orange zest, red berry and brown sugar.</p>
+              <p>A fruit-forward cup for pour-over or batch brew.</p>
+              <form data-product="bright-filter">
+                <label for="filter-grind">Grind</label>
+                <select id="filter-grind" name="grind">
+                  <option value="whole-bean">Whole bean</option>
+                  <option value="ground">Ground</option>
+                </select>
+                <button type="submit" class="cta" aria-label="Add Bright Filter to basket" disabled>Add to basket</button>
+                <p class="shop-status" data-shop-status role="status"></p>
+                <a class="view-basket" href="basket.html" hidden>View basket</a>
+              </form>
+            </div>
+          </article>
+
+          <article class="coffee-card">
+            <img class="decaf-photo" src="https://images.unsplash.com/photo-1634250532092-8af3e6dc70ad?auto=format&amp;fit=crop&amp;w=680&amp;q=78" alt="" width="680" height="510" loading="lazy">
+            <div class="coffee-card-body">
+              <p class="eyebrow">Medium roast · 250 g</p>
+              <div class="product-title"><h3>Decaf</h3><span class="price">£12.50</span></div>
+              <p class="tasting-notes">Cocoa, toasted almond and soft plum.</p>
+              <p>A mellow cup for an after-dinner coffee.</p>
+              <form data-product="decaf">
+                <label for="decaf-grind">Grind</label>
+                <select id="decaf-grind" name="grind">
+                  <option value="whole-bean">Whole bean</option>
+                  <option value="ground">Ground</option>
+                </select>
+                <button type="submit" class="cta" aria-label="Add Decaf to basket" disabled>Add to basket</button>
+                <p class="shop-status" data-shop-status role="status"></p>
+                <a class="view-basket" href="basket.html" hidden>View basket</a>
+              </form>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <p>Birch &amp; Bloom is a fictional café and coffee shop.</p>
+      <a href="../../work.html#cafes">Back to Clearframe Web</a>
+    </div>
+  </footer>
+</body>
+</html>
