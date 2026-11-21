@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A fictional neighbourhood café. Explore the Birch & Bloom coffee, bakes and brunch menu.">
+<meta name="theme-color" content="#f5f0e4">
+<title>Birch &amp; Bloom Café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --cream: #f5f0e4;
+  --ink: #263729;
+  --light: #e4e9d8;
+  --green: #324a37;
+  --line: #a4af99;
+  --display: Fraunces, Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 1rem/1.55 "DM Sans", Arial, sans-serif; }
+a { color: inherit; }
+button { color: inherit; font: inherit; cursor: pointer; }
+a:focus-visible, button:focus-visible { outline: 2px solid #86592a; outline-offset: 4px; }
+img { display: block; width: 100%; object-fit: cover; }
+.wrap { width: min(100% - 2.5rem, 71rem); margin-inline: auto; }
+.skip { position: absolute; left: 1rem; top: -10rem; z-index: 5; padding: .65rem 1rem; background: var(--cream); }
+.skip:focus { top: 1rem; }
+.demo-bar { background: var(--ink); color: var(--cream); font-size: .875rem; }
+.demo-bar .wrap, .nav { display: flex; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; flex-wrap: wrap; }
+.demo-bar .wrap { padding-block: .55rem; }
+.nav { min-height: 5rem; padding-block: .75rem; border-bottom: 1px solid var(--line); }
+.brand { font: 650 1.45rem/1 var(--display); text-decoration: none; letter-spacing: -.04em; }
+.brand::before { content: "✳"; display: inline-block; color: #74613b; margin-right: .45rem; }
+nav { display: flex; flex-wrap: wrap; gap: .6rem 1.25rem; font-weight: 700; }
+nav a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.hero { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: clamp(2rem, 6vw, 5rem); padding-block: clamp(2.5rem, 7vw, 6rem); }
+.hero img { border-radius: 48% 48% .55rem .55rem / 34% 34% .55rem .55rem; aspect-ratio: .96; background: #a49c80; }
+.eyebrow { margin: 0 0 .85rem; text-transform: uppercase; font-size: .875rem; font-weight: 700; letter-spacing: .11em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1; }
+h1 { margin: 0; font-size: clamp(3.35rem, 8vw, 7.8rem); letter-spacing: -.075em; }
+h1 em { display: block; color: #536448; font-weight: 500; }
+h2 { margin: 0 0 1rem; font-size: clamp(2.55rem, 5vw, 4.85rem); letter-spacing: -.065em; }
+h3 { font-size: 1.5rem; margin: 0 0 .55rem; }
+.hero p:not(.eyebrow) { max-width: 28rem; margin: 1.4rem 0 1.6rem; font-size: 1.12rem; }
+.cta { display: inline-flex; min-height: 3rem; align-items: center; padding: .65rem 1.2rem; border-radius: 2rem; background: var(--green); color: #fff; font-weight: 700; text-decoration: none; }
+.cta:hover { background: #263729; }
+.menu { background: var(--light); padding-block: clamp(3rem, 7vw, 5.75rem); }
+.menu .wrap { max-width: 58rem; }
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 1.6rem; }
+.filters[hidden] { display: none; }
+.filters button { min-height: 2.75rem; padding: .45rem .95rem; border: 1px solid var(--line); border-radius: 2rem; background: transparent; font-weight: 700; }
+.filters button[aria-pressed="true"], .filters button:hover { background: var(--green); border-color: var(--green); color: #fff; }
+.menu-group { margin: 1.65rem 0 2rem; }
+dl, dd { margin: 0; }
+.menu-group dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+.menu-group dl div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-content: start; gap: .25rem .8rem; padding: .8rem 0; border-top: 1px solid var(--line); }
+dt, .price { font-weight: 700; }
+.price { grid-column: 2; grid-row: 1; }
+.menu-group .description { grid-row: 2; grid-column: 1 / -1; }
+.hours { display: grid; grid-template-columns: 1fr .75fr; gap: 1.5rem 3rem; padding-block: clamp(3rem, 7vw, 5.5rem); }
+.hours p { margin: .6rem 0 0; }
+.hours dl { align-self: center; }
+.hours dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; border-top: 1px solid var(--line); padding: .55rem 0; }
+footer { border-top: 1px solid var(--line); padding-block: 1.25rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; }
+footer p { margin: 0; }
+@media (max-width: 43rem) {
+  .hero, .hours { grid-template-columns: 1fr; }
+  .hero img { width: min(100%, 30rem); aspect-ratio: 1.2; }
+}
+@media (max-width: 32rem) {
+  .menu-group dl { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar">
+  <div class="wrap"><span>Clearframe Web portfolio demo</span><a href="../../work.html#cafes">Back to portfolio</a></div>
+</div>
+<header class="wrap nav">
+  <a class="brand" href="#main">Birch &amp; Bloom</a>
+  <nav aria-label="Café navigation"><a href="#menu">Menu</a><a href="#visit">Visit</a></nav>
+</header>
+<main id="main">
+  <section class="wrap hero">
+    <div>
+      <p class="eyebrow">Coffee, bakes &amp; brunch in Chorlton</p>
+      <h1>Make a little <em>time for coffee.</em></h1>
+      <p>Come in for a flat white, something warm from the oven, or a long brunch with someone you’ve been meaning to see.</p>
+      <a class="cta" href="#menu">Explore the menu</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1770012117402-853655541b9b?auto=format&amp;fit=crop&amp;w=1400&amp;q=82" alt="Barista at a warm wooden café counter" fetchpriority="high">
+  </section>
+  <section id="menu" class="menu">
+    <div class="wrap">
+      <h2>At the counter</h2>
+      <p>Brunch is served until 2.30 pm. Coffee and bakes are available all day.</p>
+      <div class="filters" role="group" aria-label="Filter menu" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">Full menu</button>
+        <button type="button" data-filter="coffee" aria-pressed="false">Coffee</button>
+        <button type="button" data-filter="brunch" aria-pressed="false">Brunch</button>
+        <button type="button" data-filter="bakes" aria-pressed="false">Bakes</button>
+      </div>
+      <div class="menu-group" data-menu="coffee">
+        <h3>Coffee</h3>
+        <dl>
+          <div><dt>Flat white</dt><dd class="price">£3.40</dd><dd class="description">House espresso and silky milk.</dd></div>
+          <div><dt>Filter coffee</dt><dd class="price">£3.00</dd><dd class="description">A batch brew made with our guest beans.</dd></div>
+          <div><dt>Long black</dt><dd class="price">£3.00</dd><dd class="description">Double espresso over hot water.</dd></div>
+          <div><dt>Iced vanilla latte</dt><dd class="price">£4.10</dd><dd class="description">Espresso, vanilla and your choice of milk.</dd></div>
+        </dl>
+      </div>
+      <div class="menu-group" data-menu="brunch">
+        <h3>Brunch</h3>
+        <dl>
+          <div><dt>Herby mushrooms on toast</dt><dd class="price">£9.50</dd><dd class="description">Garlic mushrooms, whipped ricotta and sourdough.</dd></div>
+          <div><dt>Soft eggs and greens</dt><dd class="price">£9.00</dd><dd class="description">Scrambled eggs, wilted greens and chilli butter.</dd></div>
+          <div><dt>Yoghurt and orchard fruit</dt><dd class="price">£6.80</dd><dd class="description">Thick yoghurt, stewed apples and oat granola.</dd></div>
+          <div><dt>Cheddar and pickle toastie</dt><dd class="price">£8.20</dd><dd class="description">Mature cheddar and house onion pickle on sourdough.</dd></div>
+        </dl>
+      </div>
+      <div class="menu-group" data-menu="bakes">
+        <h3>Bakes</h3>
+        <dl>
+          <div><dt>Cardamom bun</dt><dd class="price">£3.70</dd><dd class="description">A soft knot with brown sugar and ground cardamom.</dd></div>
+          <div><dt>Lemon and almond loaf</dt><dd class="price">£3.80</dd><dd class="description">A slice of almond sponge with a sharp lemon glaze.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <section id="visit" class="wrap hours">
+    <div>
+      <h2>Come on in.</h2>
+      <p>Chorlton, Manchester</p>
+      <p>Walk in for a seat or order at the counter to take away.</p>
+    </div>
+    <dl aria-label="Sample opening hours">
+      <div><dt>Monday to Friday</dt><dd>8 am to 4 pm</dd></div>
+      <div><dt>Saturday</dt><dd>8.30 am to 4 pm</dd></div>
+      <div><dt>Sunday</dt><dd>9 am to 3 pm</dd></div>
+    </dl>
+  </section>
+</main>
+<footer>
+  <div class="wrap"><p>Birch &amp; Bloom is a fictional café.</p><a href="../../work.html#cafes">Back to Clearframe Web</a></div>
+</footer>
+<script>
+const filters = document.querySelector(".filters");
+const filterButtons = filters.querySelectorAll("button");
+const menuGroups = document.querySelectorAll("[data-menu]");
+filters.hidden = false;
+for (const button of filterButtons) {
+  button.addEventListener("click", () => {
+    for (const option of filterButtons) {
+      option.setAttribute("aria-pressed", String(option === button));
+    }
+    for (const group of menuGroups) {
+      group.hidden = button.dataset.filter !== "all" && group.dataset.menu !== button.dataset.filter;
+    }
+  });
+}
+</script>
+</body>
+</html>

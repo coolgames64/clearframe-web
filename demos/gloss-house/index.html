@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A Manchester hair salon website concept with a treatment list and a demo appointment flow.">
+<meta name="theme-color" content="#271e1c">
+<title>Gloss House · Cut, colour &amp; styling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#251b19;--brown:#392a26;--paper:#faeee8;--rose:#f0d3c6;--line:#c5ada4;--display:"Instrument Serif",Georgia,serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 "Manrope",Arial,sans-serif}
+a{color:inherit;text-underline-offset:.22em}
+:focus-visible{outline:3px solid #955841;outline-offset:4px}
+:target{scroll-margin-top:22px}
+p,h1,h2,h3{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.035em}
+h1{font-size:clamp(4.5rem,10vw,9.15rem);line-height:.8}
+h2{font-size:clamp(3.5rem,7vw,6.15rem);line-height:.9}
+h3{font-size:clamp(1.9rem,4vw,3.15rem);line-height:1}
+.shell{width:min(1180px,calc(100% - 72px));margin-inline:auto}
+.skip{position:absolute;top:0;left:1rem;transform:translateY(-150%);background:var(--paper);color:var(--ink);padding:.65rem 1rem;z-index:3}
+.skip:focus{transform:translateY(0)}
+.eyebrow{font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.top{background:var(--ink);color:var(--paper)}
+.top :focus-visible,.hero :focus-visible{outline-color:var(--rose)}
+.demo-bar{background:#40302c}
+.demo-bar .shell{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding-block:.42rem;font-size:.875rem}
+.navbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.1rem}
+.logo{text-decoration:none;font:2.1rem/1 var(--display);letter-spacing:-.02em}
+nav{display:flex;gap:clamp(.85rem,3vw,2.3rem);align-items:center;flex-wrap:wrap}
+nav a{font-size:.94rem;text-decoration:none;font-weight:700}
+nav a:hover{text-decoration:underline}
+.button{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:.65rem 1.25rem;border:1px solid transparent;border-radius:100px;color:var(--paper);background:var(--ink);font:800 .95rem/1.3 "Manrope",Arial,sans-serif;text-decoration:none;text-align:center;cursor:pointer}
+.button:hover{background:#4b3831}
+.button.light{background:var(--rose);color:var(--ink)}
+.button.light:hover{background:#fae6dc}
+.navbar .button{color:var(--paper);border-color:#aa8b80;background:transparent}
+.navbar .button:hover{background:var(--brown)}
+.hero{min-height:clamp(510px,65vw,700px);position:relative;isolation:isolate;background:var(--brown);color:var(--paper);display:grid;align-items:end}
+.hero img,.hero::after{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero img{object-fit:cover;object-position:center}
+.hero::after{content:"";z-index:-1;background:linear-gradient(90deg,rgba(31,20,18,.89),rgba(31,20,18,.55) 42%,rgba(31,20,18,.08) 78%),linear-gradient(0deg,rgba(31,20,18,.53),transparent 55%)}
+.hero-copy{display:grid;justify-items:start;gap:1.35rem;padding-block:clamp(2.8rem,7vw,5.4rem)}
+.hero h1 em{display:block;font-weight:400}
+.hero-copy p:last-of-type{max-width:37ch;font-size:1.12rem}
+.treatments{padding-block:clamp(3.5rem,8vw,7rem)}
+.treatment-intro{display:grid;grid-template-columns:1fr .45fr;align-items:end;gap:1rem;margin-bottom:2.7rem}
+.treatment-intro h2{margin-top:.55rem}
+.treatment-intro p:last-child{max-width:37ch}
+.treatment{display:grid;grid-template-columns:1fr .42fr auto;align-items:center;gap:1.25rem;padding-block:1.6rem;border-top:1px solid var(--line)}
+.treatment:last-child{border-bottom:1px solid var(--line)}
+.treatment p{margin-top:.35rem}
+.treatment-meta{color:#604740;white-space:nowrap}
+.choose-treatment{display:inline-block;padding:.6rem 0;margin-left:auto;font-weight:800}
+.booking{background:var(--rose);padding-block:clamp(3.5rem,8vw,7rem)}
+.booking .shell{display:grid;grid-template-columns:.72fr 1fr;gap:clamp(1.75rem,6vw,6.5rem)}
+.booking-copy h2{margin-block:.6rem 1rem}
+.booking-copy p:last-child{max-width:35ch}
+.booking-form{background:#f9ece5;border:1px solid #9f8073;border-radius:4px;padding:clamp(1rem,3vw,2.25rem);display:grid;gap:1.05rem;align-self:start}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:grid;gap:.3rem;font-weight:700}
+.select{position:relative}
+.select::after{content:"";position:absolute;right:1rem;top:calc(50% - .3rem);width:.55rem;height:.55rem;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);pointer-events:none}
+select{appearance:none;width:100%;min-height:48px;padding:.55rem 2rem .55rem .55rem;border:1px solid #9f8073;border-radius:4px;background:#fff8f4;color:var(--ink);font:inherit;text-overflow:ellipsis}
+.booking-form .button{justify-self:start}
+.booking-form .button:disabled{opacity:.65;cursor:default}
+#booking-result:not([hidden]){padding:.5rem .75rem;border-left:3px solid #92573d;background:#f4ded3}
+footer{background:var(--ink);color:var(--paper)}
+footer .shell{display:flex;justify-content:space-between;gap:.75rem;align-items:center;flex-wrap:wrap;padding-block:1.35rem}
+footer small{font-size:.875rem}
+@media(max-width:760px){.shell{width:calc(100% - 40px)}.booking .shell,.treatment-intro{grid-template-columns:1fr}.treatment-intro{margin-bottom:1.6rem}.treatment{grid-template-columns:1fr auto}.treatment h3,.treatment p{max-width:25ch}.treatment-meta{grid-row:2}.treatment{gap:.35rem 1rem}.choose-treatment{grid-row:2;grid-column:2}.treatment>div{grid-column:1/-1}.hero::after{background:linear-gradient(90deg,rgba(31,20,18,.72),rgba(31,20,18,.22)),linear-gradient(0deg,rgba(31,20,18,.4),transparent 80%)}}
+@media(max-width:510px){.hero{min-height:525px}.hero img{object-position:55% center}.navbar{flex-wrap:wrap;padding-block:.85rem}.navbar nav{order:3;width:100%}.logo{font-size:1.85rem}.navbar .button{min-height:44px;padding:.5rem .85rem}.demo-bar .shell{font-size:.82rem}.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top">
+  <div class="demo-bar"><div class="shell"><span>Clearframe Web demo</span><a href="../../work.html#salons">Back to portfolio</a></div></div>
+  <header class="shell navbar">
+    <a class="logo" href="#top">Gloss House</a>
+    <nav aria-label="Main navigation"><a href="#treatments">Treatments</a><a href="#appointments">Appointments</a></nav>
+    <a class="button" href="#appointments">Find a slot</a>
+  </header>
+</div>
+<main id="main">
+  <section class="hero" aria-labelledby="welcome">
+    <img src="https://images.pexels.com/photos/7750108/pexels-photo-7750108.jpeg?auto=compress&amp;w=1750" alt="Hair salon with dark styling chairs and softly lit vanity mirrors" width="7360" height="4747" fetchpriority="high">
+    <div class="shell hero-copy">
+      <p class="eyebrow">Independent hair studio · Manchester</p>
+      <h1 id="welcome">Good hair. <em>Your way.</em></h1>
+      <p>Considered cuts, lived-in colour and styling that works for the way you wear your hair.</p>
+      <a class="button light" href="#treatments">View treatments</a>
+    </div>
+  </section>
+  <section id="treatments" class="shell treatments" aria-labelledby="treatments-title">
+    <div class="treatment-intro">
+      <div><p class="eyebrow">The menu</p><h2 id="treatments-title">Cut, colour &amp; finish</h2></div>
+      <p>Every appointment begins with a chat about your hair and how you like to style it.</p>
+    </div>
+    <article class="treatment">
+      <div><h3>Cut &amp; finish</h3><p>A wash, tailored cut and finish, with advice for styling at home.</p></div>
+      <span class="treatment-meta">60 min · from £58</span><a class="choose-treatment" data-treatment="cut" href="#appointments">Choose cut</a>
+    </article>
+    <article class="treatment">
+      <div><h3>Gloss &amp; blow-dry</h3><p>A shine treatment with a smooth or textured blow-dry.</p></div>
+      <span class="treatment-meta">75 min · from £72</span><a class="choose-treatment" data-treatment="gloss" href="#appointments">Choose gloss</a>
+    </article>
+    <article class="treatment">
+      <div><h3>Colour consultation</h3><p>Talk through your colour goals, upkeep and the options for your hair.</p></div>
+      <span class="treatment-meta">20 min · complimentary</span><a class="choose-treatment" data-treatment="colour" href="#appointments">Choose consultation</a>
+    </article>
+  </section>
+  <section id="appointments" class="booking" aria-labelledby="appointments-title">
+    <div class="shell">
+      <div class="booking-copy">
+        <p class="eyebrow">Tuesday to Saturday</p><h2 id="appointments-title">Find your appointment</h2>
+        <p>Choose a treatment and try the booking flow with example appointment times.</p>
+      </div>
+      <form class="booking-form" aria-describedby="booking-note">
+        <label>Treatment<span class="select"><select id="treatment" required><option value="">Select a treatment</option><option value="cut">Cut &amp; finish</option><option value="gloss">Gloss &amp; blow-dry</option><option value="colour">Colour consultation</option></select></span></label>
+        <div class="fields">
+          <label>Day<span class="select"><select id="day" required disabled><option value="">Select a treatment first</option></select></span></label>
+          <label>Time<span class="select"><select id="time" required disabled><option value="">Select a day first</option></select></span></label>
+        </div>
+        <p id="booking-note">This is a demo. Selecting a time shows an appointment preview.</p>
+        <button id="booking-button" class="button" type="submit" disabled>Preview appointment</button>
+        <p id="booking-result" role="status" aria-live="polite" hidden></p>
+        <noscript><p>Enable JavaScript to try the appointment preview.</p></noscript>
+      </form>
+    </div>
+  </section>
+</main>
+<footer><div class="shell"><small>Gloss House · A Clearframe Web concept</small><small>Photography by <a href="https://www.pexels.com/photo/photo-of-the-interior-of-a-salon-7750108/">Max Vakhtbovych</a></small></div></footer>
+<script>
+const bookingForm = document.querySelector('.booking-form');
+const treatment = document.querySelector('#treatment');
+const day = document.querySelector('#day');
+const time = document.querySelector('#time');
+const bookingButton = document.querySelector('#booking-button');
+const result = document.querySelector('#booking-result');
+const dateLabel = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+const dailySlots = {
+  2: ['10:30', '13:00', '16:15'],
+  3: ['09:30', '12:15', '15:30'],
+  4: ['11:00', '14:20', '17:00'],
+  5: ['10:15', '13:30', '16:45'],
+  6: ['09:00', '11:45', '13:15']
+};
+
+function resetResult() {
+  result.hidden = true;
+  result.textContent = '';
+  bookingButton.disabled = !time.value;
+}
+
+function updateDay() {
+  day.disabled = !treatment.value;
+  day.replaceChildren(new Option(day.disabled ? 'Select a treatment first' : 'Select a day', ''));
+
+  if (!day.disabled) {
+    const date = new Date();
+    for (let offset = 1; offset <= 10; offset++) {
+      date.setDate(date.getDate() + 1);
+      if (!dailySlots[date.getDay()]) continue;
+      day.add(new Option(dateLabel.format(date), String(date.getTime())));
+    }
+  }
+
+  updateTime();
+}
+
+function updateTime() {
+  time.disabled = !day.value;
+  time.replaceChildren(new Option(time.disabled ? 'Select a day first' : 'Select a time', ''));
+
+  if (!time.disabled) {
+    const weekday = new Date(Number(day.value)).getDay();
+    const slots = treatment.value === 'gloss' ? dailySlots[weekday].slice(0, 2) : dailySlots[weekday];
+    slots.forEach(slot => time.add(new Option(slot)));
+  }
+
+  resetResult();
+}
+
+document.querySelectorAll('[data-treatment]').forEach(link => {
+  link.addEventListener('click', () => {
+    treatment.value = link.dataset.treatment;
+    updateDay();
+  });
+});
+
+treatment.addEventListener('change', updateDay);
+day.addEventListener('change', updateTime);
+time.addEventListener('change', resetResult);
+
+bookingForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const session = treatment.options[treatment.selectedIndex].text;
+  const date = day.options[day.selectedIndex].text;
+  result.hidden = false;
+  result.textContent = 'Appointment preview · ' + session + ' on ' + date + ' at ' + time.value + '.';
+});
+
+updateDay();
+</script>
+</body>
+</html>
